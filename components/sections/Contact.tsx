@@ -12,7 +12,7 @@ export function Contact() {
             <SectionHeading
               eyebrow="Contact"
               title={<span id="contact-title">Start the next conversation.</span>}
-              copy="The skill review favored a conversion-focused form: clear labels, visible focus, trust cues, newsletter path, and no unnecessary complexity."
+              copy="Tell us what your child, teen, school, or parent group needs. We will help shape the right emotional-growth pathway."
             />
             <div className="mt-8 grid gap-4">
               <div className="glass-panel flex items-center gap-4 rounded-3xl p-4">

@@ -11,7 +11,7 @@ export function Roadmap() {
         <SectionHeading
           eyebrow="Future roadmap"
           title={<span id="roadmap-title">A platform, not a brochure.</span>}
-          copy="The roadmap is staged as a journey so visitors can see the ecosystem growing toward games, labs, and school tools."
+          copy="The roadmap is staged as a journey so visitors can see the ecosystem growing toward guided practice, parent support, and school wellbeing tools."
         />
 
         <div className="relative mt-14">

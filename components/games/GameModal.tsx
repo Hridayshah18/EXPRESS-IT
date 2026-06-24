@@ -20,22 +20,22 @@ export function GameModal({
         <div className="flex items-start justify-between gap-5">
           <div>
             <p className="font-mono text-xs font-bold uppercase tracking-normal text-emerald-200">
-              Game launcher
+              Practice launcher
             </p>
             <h2 className="mt-2 font-display text-3xl font-black">{game.title}</h2>
           </div>
           <button
             type="button"
             className="touch-target inline-flex items-center justify-center rounded-full bg-white/10"
-            aria-label="Close game launcher"
+            aria-label="Close practice launcher"
             onClick={onClose}
           >
             <X className="h-5 w-5" />
           </button>
         </div>
         <p className="mt-4 leading-7 text-slate-200">
-          This modal is prepared for future embedded game loading, save states, and session handoff.
-          Today, each game opens on its own internal Express It route.
+          This modal is prepared for future guided practice loading, save states, and session handoff.
+          Today, each practice opens on its own internal Express It route.
         </p>
       </div>
     </div>

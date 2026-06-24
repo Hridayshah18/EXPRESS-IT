@@ -12,13 +12,13 @@ export default function GamesIndexPage() {
       <main id="main-content" className="min-h-screen bg-[#080A1A] px-4 pb-16 pt-28 text-white">
         <div className="container-shell">
           <p className="font-mono text-xs font-bold uppercase tracking-normal text-emerald-200">
-            Express It games
+            Express It practice tools
           </p>
           <h1 className="mt-3 font-display text-5xl font-black md:text-7xl">
             Mind Gym Library
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-200">
-            Internal routes are prepared for future gameplay. Pick a placeholder to preview the game page shell.
+            Internal routes are prepared for future guided practice. Preview how each tool will support emotional skills and reflection.
           </p>
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {games.map((game) => (

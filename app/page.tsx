@@ -1,6 +1,5 @@
 import { Footer } from "@/components/Footer";
 import { SiteNav } from "@/components/SiteNav";
-import { BrainLab } from "@/components/sections/BrainLab";
 import { Contact } from "@/components/sections/Contact";
 import { ExpressFramework } from "@/components/sections/ExpressFramework";
 import { GenerationalChallenges } from "@/components/sections/GenerationalChallenges";
@@ -23,7 +22,6 @@ export default function Home() {
         <ExpressFramework />
         <StatsAndPrograms />
         <MindGym />
-        <BrainLab />
         <SuccessStories />
         <ParentHub />
         <Roadmap />

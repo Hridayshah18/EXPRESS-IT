@@ -28,3 +28,4 @@ Thumbs.db
 # local Codex tooling and verification artifacts
 .codex/
 framework-*.png
+audit-*.png

@@ -52,7 +52,7 @@ export function SiteNav({ compact = false }: SiteNavProps) {
           href={compact ? "/#mind-gym" : "#contact"}
           className="touch-target hidden items-center rounded-full bg-ink px-5 py-3 text-sm font-black text-white shadow-soft transition-transform duration-200 hover:-translate-y-0.5 md:inline-flex"
         >
-          {compact ? "Explore Games" : "Start Journey"}
+          {compact ? "Explore Tools" : "Start Journey"}
         </Link>
 
         {!compact ? (

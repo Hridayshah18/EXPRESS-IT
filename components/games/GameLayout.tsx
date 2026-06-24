@@ -25,7 +25,7 @@ export function GameLayout({ game }: { game: Game }) {
               <div className="flex items-start justify-between">
                 <div>
                   <p className="font-mono text-xs font-bold uppercase tracking-normal text-white/75">
-                    Express It game area
+                    Express It practice space
                   </p>
                   <h1 className="mt-3 font-display text-5xl font-black md:text-7xl">
                     {game.title}
@@ -36,10 +36,10 @@ export function GameLayout({ game }: { game: Game }) {
                 </div>
               </div>
               <div className="rounded-[1.5rem] border border-white/20 bg-black/20 p-6 backdrop-blur-xl">
-                <p className="text-lg font-bold">Game placeholder</p>
+                <p className="text-lg font-bold">Practice placeholder</p>
                 <p className="mt-2 max-w-2xl leading-7 text-white/80">
-                  The routing, layout, leaderboard slot, achievements, and return path are ready.
-                  Gameplay will plug into this area without moving users outside Express It.
+                  The routing, layout, reflection tools, progress space, and return path are ready.
+                  Guided practice will plug into this area without moving users outside Express It.
                 </p>
               </div>
             </div>
@@ -60,9 +60,9 @@ export function GameLayout({ game }: { game: Game }) {
               </div>
             </div>
             <div className="mt-6 rounded-3xl bg-white/10 p-5">
-              <p className="font-bold">Leaderboard Placeholder</p>
+              <p className="font-bold">Progress Board Placeholder</p>
               <p className="mt-2 text-sm leading-6 text-slate-300">
-                Future school, family, and personal-best boards will live here.
+                Future school, family, and personal growth milestones will live here.
               </p>
             </div>
           </aside>
@@ -89,7 +89,7 @@ export function GameLayout({ game }: { game: Game }) {
                 <p className="font-display text-xl font-black">{item.title}</p>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
                 <div className="mt-4">
-                  <GameLauncher game={item} label="Open" />
+                  <GameLauncher game={item} label="Open practice" />
                 </div>
               </div>
             ))}

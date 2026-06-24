@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "EXPRESS IT | Learn. Express. Grow.",
     description:
-      "A cinematic youth growth platform for learning, expression, emotional intelligence, and future games.",
+      "A cinematic youth growth platform for emotional intelligence, communication, confidence, and real-world life skills.",
     type: "website",
   },
 };

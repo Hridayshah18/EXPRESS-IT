@@ -2,34 +2,36 @@
 
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Stagger, StaggerItem, TiltCard } from "@/components/MotionPrimitives";
 import { formatNumber } from "@/lib/utils";
 import { programs, stats } from "@/lib/content";
 
-function ProgramVisual({ accent }: { accent: string }) {
+function ProgramVisual({
+  accent,
+  image,
+}: {
+  accent: string;
+  image: string;
+}) {
   return (
-    <div
-      className="relative aspect-[4/5] overflow-hidden"
-      style={{
-        background: `radial-gradient(circle at 24% 18%, ${accent}55, transparent 11rem), linear-gradient(145deg, #ffffff 0%, #f8fafc 45%, ${accent}22 100%)`,
-      }}
-      aria-hidden="true"
-    >
-      <div className="absolute left-5 top-5 h-24 w-24 rounded-[2rem] bg-white/80 shadow-soft" />
-      <div
-        className="absolute right-5 top-16 h-28 w-28 rounded-full shadow-soft"
-        style={{ backgroundColor: `${accent}44` }}
+    <>
+      <Image
+        src={image}
+        alt=""
+        fill
+        sizes="(min-width: 1280px) 280px, (min-width: 768px) 25vw, 80vw"
+        className="object-cover"
       />
-      <div className="absolute bottom-16 left-6 right-6 h-24 rounded-[2rem] bg-white/80 shadow-soft backdrop-blur-xl" />
-      <div className="absolute bottom-28 left-12 h-5 w-36 rounded-full bg-slate-900/10" />
       <div
-        className="absolute bottom-10 right-8 h-20 w-20 rounded-[1.7rem] shadow-soft"
-        style={{ backgroundColor: accent }}
+        className="absolute inset-0 opacity-80"
+        style={{
+          background: `linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.28) 44%, rgba(15, 23, 42, 0.9) 100%), radial-gradient(circle at 20% 18%, ${accent}44, transparent 13rem)`,
+        }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" />
-    </div>
+    </>
   );
 }
 
@@ -55,7 +57,7 @@ export function StatsAndPrograms() {
           <SectionHeading
             eyebrow="Why it works"
             title={<span id="works-title">Numbers that feel human.</span>}
-            copy="The skill review pushed this section toward clear visual hierarchy and lightweight animation: the counters reward scrolling without stealing attention."
+            copy="Every number points back to a human goal: safer conversations, steadier confidence, and support that can repeat at home and school."
           />
 
           <Stagger className="mt-12 grid gap-4 md:grid-cols-4">
@@ -81,8 +83,8 @@ export function StatsAndPrograms() {
         <div className="container-shell relative z-10">
           <SectionHeading
             eyebrow="Programs"
-            title={<span id="programs-title">Browse growth like a streaming shelf.</span>}
-            copy="Each program is a visual doorway with quick scanning, hover previews, and a strong call to learn more."
+            title={<span id="programs-title">Growth pathways for real life.</span>}
+            copy="Each program focuses on practical emotional skills, communication habits, and confidence that students can use beyond the classroom."
           />
 
           <div className="mt-12 flex snap-x gap-5 overflow-x-auto pb-5 md:grid md:grid-cols-4 md:overflow-visible">
@@ -96,7 +98,7 @@ export function StatsAndPrograms() {
                 >
                   <article className="glass-panel h-full overflow-hidden rounded-[1.75rem]">
                     <div className="relative aspect-[4/5] overflow-hidden">
-                      <ProgramVisual accent={program.accent} />
+                      <ProgramVisual accent={program.accent} image={program.image} />
                       <div
                         className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl text-white"
                         style={{ backgroundColor: program.accent }}

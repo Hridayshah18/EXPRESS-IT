@@ -41,7 +41,7 @@ export function GameCard({ game }: { game: Game }) {
             </div>
           </div>
           <div className="mt-6">
-            <GameLauncher game={game} label="Launch" />
+            <GameLauncher game={game} label="Open practice" />
           </div>
         </div>
       </div>

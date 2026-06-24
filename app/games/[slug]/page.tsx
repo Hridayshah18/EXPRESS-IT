@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: GamePageProps): Promise<Metad
 
   if (!game) {
     return {
-      title: "Game not found | EXPRESS IT",
+      title: "Practice not found | EXPRESS IT",
     };
   }
 

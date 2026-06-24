@@ -1,6 +1,6 @@
 import { Sparkles } from "lucide-react";
 
-const links = ["Programs", "Games", "Resources", "Contact", "Social"];
+const links = ["Programs", "Mind Gym", "Resources", "Contact", "Social"];
 
 export function Footer() {
   return (

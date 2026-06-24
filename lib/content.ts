@@ -1,9 +1,6 @@
 import {
-  BrainCircuit,
   ChartNoAxesCombined,
-  CircleGauge,
   Compass,
-  Gamepad2,
   GraduationCap,
   HeartHandshake,
   Landmark,
@@ -45,6 +42,7 @@ export type Program = {
   title: string;
   audience: string;
   description: string;
+  image: string;
   accent: string;
   icon: LucideIcon;
 };
@@ -60,18 +58,10 @@ export type Game = {
   icon: LucideIcon;
 };
 
-export type LabChallenge = {
-  title: string;
-  description: string;
-  status: string;
-  icon: LucideIcon;
-};
-
 export const navItems: NavItem[] = [
   { label: "Framework", href: "#framework" },
   { label: "Programs", href: "#programs" },
   { label: "Mind Gym", href: "#mind-gym" },
-  { label: "Brain Lab", href: "#brain-lab" },
   { label: "Parent Hub", href: "#parent-hub" },
 ];
 
@@ -128,7 +118,7 @@ export const portals: Portal[] = [
     title: "Kids",
     range: "6-12",
     description:
-      "Playful emotional vocabulary, confidence rituals, and expression games that make self-understanding feel natural.",
+      "Playful emotional vocabulary, confidence rituals, and expression activities that make self-understanding feel natural.",
     color: "#22C55E",
     icon: Sparkles,
   },
@@ -163,6 +153,7 @@ export const programs: Program[] = [
     audience: "Confidence through play",
     description:
       "Story-based expression, feelings vocabulary, kindness missions, and social confidence labs.",
+    image: "/images/programs/kids-programs.png",
     accent: "#22C55E",
     icon: Sparkles,
   },
@@ -171,6 +162,7 @@ export const programs: Program[] = [
     audience: "Pressure-proof skills",
     description:
       "Identity, exam resilience, communication, peer pressure, focus, and leadership experiences.",
+    image: "/images/programs/teen-programs.png",
     accent: "#4F46E5",
     icon: Zap,
   },
@@ -179,6 +171,7 @@ export const programs: Program[] = [
     audience: "Calmer homes",
     description:
       "Practical conversation tools for emotions, screen habits, confidence, and academic pressure.",
+    image: "/images/programs/parent-workshops.png",
     accent: "#F59E0B",
     icon: HeartHandshake,
   },
@@ -187,6 +180,7 @@ export const programs: Program[] = [
     audience: "Whole-campus growth",
     description:
       "Assemblies, workshops, educator resources, and wellbeing programs designed for repeat impact.",
+    image: "/images/programs/school-partnerships.png",
     accent: "#14B8A6",
     icon: Landmark,
   },
@@ -197,7 +191,7 @@ export const games: Game[] = [
     slug: "patternmind",
     title: "PATTERNMIND",
     description:
-      "Spot emotional and visual patterns before the timer runs out.",
+      "Notice emotional and visual patterns, then choose a calmer next step.",
     difficulty: "Starter",
     progress: 38,
     accent: "#22C55E",
@@ -208,7 +202,7 @@ export const games: Game[] = [
     slug: "bollyverse",
     title: "BOLLYVERSE",
     description:
-      "Read expressions, scenes, and social cues in a cinematic challenge world.",
+      "Read expressions, scenes, and social cues through guided reflection prompts.",
     difficulty: "Explorer",
     progress: 22,
     accent: "#F59E0B",
@@ -219,7 +213,7 @@ export const games: Game[] = [
     slug: "chain-reaction",
     title: "CHAIN REACTION",
     description:
-      "Practice cause-and-effect thinking through fast reaction chains.",
+      "Practice cause-and-effect thinking for choices, reactions, and relationships.",
     difficulty: "Challenger",
     progress: 16,
     accent: "#4F46E5",
@@ -230,45 +224,12 @@ export const games: Game[] = [
     slug: "rainbow-flow",
     title: "RAINBOW FLOW",
     description:
-      "Build focus and emotional regulation through color-flow puzzles.",
+      "Build focus and emotional regulation through gentle color-flow practice.",
     difficulty: "Pro",
     progress: 9,
     accent: "#F43F5E",
     bg: "from-rose-400 via-orange-400 to-violet-600",
     icon: Orbit,
-  },
-];
-
-export const labChallenges: LabChallenge[] = [
-  {
-    title: "Reaction Test",
-    description: "A future speed and calm-under-pressure challenge.",
-    status: "Prototype slot",
-    icon: Zap,
-  },
-  {
-    title: "Memory Test",
-    description: "A future working-memory pattern challenge.",
-    status: "Prototype slot",
-    icon: BrainCircuit,
-  },
-  {
-    title: "Focus Test",
-    description: "A future attention and distraction-resistance lab.",
-    status: "Prototype slot",
-    icon: CircleGauge,
-  },
-  {
-    title: "Pattern Recognition",
-    description: "A future logic, mood, and sequence detection test.",
-    status: "Prototype slot",
-    icon: Puzzle,
-  },
-  {
-    title: "Visual IQ",
-    description: "A future spatial reasoning and visual scan challenge.",
-    status: "Prototype slot",
-    icon: Gamepad2,
   },
 ];
 
@@ -288,12 +249,7 @@ export const roadmap = [
   {
     year: "2026",
     title: "Mind Gym",
-    detail: "Release the first learning games and internal challenge routes.",
-  },
-  {
-    year: "2027",
-    title: "Brain Lab",
-    detail: "Add measurable focus, memory, reaction, and pattern challenges.",
+    detail: "Release the first guided practice tools for focus, emotional regulation, and self-awareness.",
   },
   {
     year: "2028",

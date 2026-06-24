@@ -8,8 +8,8 @@ EXPRESS IT is a modern learning and expression platform concept for Gen Alpha, G
 - Immersive "A Five Stage World for Growth" video section
 - Generational challenges storytelling
 - Express framework content
-- Programs, Mind Gym, Brain Lab, Parent Hub, and Contact sections
-- Game library routes under `/games`
+- Programs, Mind Gym, Parent Hub, and Contact sections
+- Mind Gym practice routes under `/games`
 - Reduced-motion and mobile performance considerations
 
 ## Getting Started
@@ -45,7 +45,7 @@ npm run start
 
 ```txt
 app/                 Next.js app routes and global styles
-components/          Shared UI, sections, and game components
+components/          Shared UI, sections, and Mind Gym components
 lib/                 Content registry and utilities
 public/videos/       Video assets
 design-system/       EXPRESS IT design system notes

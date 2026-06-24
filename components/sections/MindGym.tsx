@@ -20,8 +20,8 @@ export function MindGym() {
       <div className="container-shell relative z-10">
         <SectionHeading
           eyebrow="Mind Gym"
-          title={<span id="mind-title">The retention engine feels like play.</span>}
-          copy="A game hub with featured quests, progress, achievement loops, and internal routes. The games are placeholders today; the platform architecture is ready."
+          title={<span id="mind-title">Practice emotional skills in small moments.</span>}
+          copy="Short interactive challenges help students build focus, self-awareness, and calm decision-making without making the platform feel like entertainment."
           tone="dark"
         />
 
@@ -31,7 +31,7 @@ export function MindGym() {
             <div className="relative z-10 flex h-full flex-col justify-between">
               <div className="flex items-center gap-3">
                 <span className="rounded-full bg-white/20 px-4 py-2 text-sm font-black">
-                  Featured Game
+                  Featured Practice
                 </span>
                 <span className="rounded-full bg-black/20 px-4 py-2 text-sm font-black">
                   Coming Soon
@@ -39,7 +39,7 @@ export function MindGym() {
               </div>
               <div>
                 <p className="font-mono text-xs font-bold uppercase tracking-normal text-white/75">
-                  Continue playing
+                  Continue practicing
                 </p>
                 <h3 className="mt-3 font-display text-5xl font-black md:text-7xl">
                   {featured.title}
@@ -74,7 +74,7 @@ export function MindGym() {
                 <h3 className="font-display text-2xl font-black">Coming Soon</h3>
               </div>
               <p className="mt-4 leading-7 text-slate-200">
-                Multiplayer school leagues, guided calm sessions, family challenges, and progress profiles.
+                Guided calm sessions, family reflection prompts, school cohorts, and progress profiles.
               </p>
             </article>
           </div>

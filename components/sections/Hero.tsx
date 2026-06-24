@@ -3,10 +3,10 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowDown,
+  ArrowUpRight,
   BrainCircuit,
   CircleGauge,
   MessageCircle,
-  Play,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -116,7 +116,7 @@ export function Hero() {
               href="#programs"
               className="touch-target inline-flex items-center justify-center gap-2 rounded-full border border-cyan-200 bg-white/82 px-7 py-4 font-black text-cyan-950 shadow-soft backdrop-blur-xl transition-colors duration-300 hover:bg-cyan-950 hover:text-white"
             >
-              <Play className="h-5 w-5" aria-hidden="true" />
+              <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
               Explore Programs
             </a>
           </motion.div>

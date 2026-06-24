@@ -155,7 +155,10 @@ summary {
   align-items: center;
   justify-content: center;
   padding: 7rem 1rem;
-  background: #050712;
+  background:
+    radial-gradient(circle at 76% 68%, rgba(255, 190, 72, 0.16), transparent 20rem),
+    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.08), transparent 34rem),
+    #050712;
   color: #ffffff;
 }
 
@@ -165,11 +168,11 @@ summary {
   z-index: -3;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   background: #050712;
-  filter: brightness(0.82) contrast(1.08) saturate(1.08) hue-rotate(5deg);
-  transform: translateZ(0) scale(1.012);
+  filter: brightness(0.78) contrast(1.08) saturate(1.04) hue-rotate(2deg);
+  transform: translateZ(0);
   backface-visibility: hidden;
   transition:
     filter 1400ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -178,8 +181,8 @@ summary {
 }
 
 .framework-video-section--revealed .framework-video-media {
-  filter: brightness(1.18) contrast(1.12) saturate(1.18) hue-rotate(4deg);
-  transform: translateZ(0) scale(1.004);
+  filter: brightness(1.13) contrast(1.1) saturate(1.09) hue-rotate(2deg);
+  transform: translateZ(0);
 }
 
 .framework-video-grade {
@@ -188,17 +191,17 @@ summary {
   z-index: -2;
   pointer-events: none;
   background:
-    linear-gradient(105deg, rgba(255, 202, 149, 0.2), rgba(255, 255, 255, 0.05) 42%, rgba(37, 99, 235, 0.04)),
-    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.18), transparent 34rem),
-    radial-gradient(ellipse at center, transparent 46%, rgba(0, 0, 0, 0.26));
+    linear-gradient(105deg, rgba(255, 214, 170, 0.14), rgba(255, 255, 255, 0.04) 42%, rgba(14, 165, 233, 0.04)),
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.12), transparent 34rem),
+    radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.2));
   mix-blend-mode: soft-light;
-  opacity: 0.55;
+  opacity: 0.48;
   transform: translateZ(0);
   transition: opacity 1400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .framework-video-section--revealed .framework-video-grade {
-  opacity: 0.72;
+  opacity: 0.54;
 }
 
 .framework-video-overlay {
@@ -215,7 +218,7 @@ summary {
 }
 
 .framework-video-section--revealed .framework-video-overlay {
-  opacity: 0.14;
+  opacity: 0.08;
 }
 
 .framework-video-content {
@@ -296,9 +299,9 @@ summary {
 
   .framework-video-grade {
     background:
-      linear-gradient(120deg, rgba(255, 202, 149, 0.18), rgba(255, 255, 255, 0.04) 48%, rgba(37, 99, 235, 0.03)),
-      radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.14), transparent 22rem),
-      radial-gradient(ellipse at center, transparent 48%, rgba(0, 0, 0, 0.2));
+      linear-gradient(120deg, rgba(255, 214, 170, 0.14), rgba(255, 255, 255, 0.04) 48%, rgba(14, 165, 233, 0.03)),
+      radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.1), transparent 22rem),
+      radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.18));
   }
 
   .framework-video-overlay {
@@ -315,7 +318,7 @@ summary {
 
 @media (max-width: 767px) and (max-aspect-ratio: 3 / 4) {
   .framework-video-section {
-    min-height: clamp(320px, 72vw, 420px);
+    min-height: clamp(240px, 64vw, 420px);
     background:
       radial-gradient(circle at 78% 58%, rgba(255, 190, 72, 0.22), transparent 13rem),
       radial-gradient(circle at 50% 48%, rgba(255, 202, 149, 0.28), transparent 22rem),
@@ -358,7 +361,7 @@ summary {
   }
 
   .framework-video-media {
-    filter: brightness(1.12) contrast(1.08) saturate(1.12) hue-rotate(4deg);
+    filter: brightness(1.1) contrast(1.08) saturate(1.06) hue-rotate(2deg);
     transform: none;
   }
 
