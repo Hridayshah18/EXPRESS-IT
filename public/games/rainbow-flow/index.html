@@ -195,8 +195,44 @@
       .rf-pad.rf-active::after { animation: none; opacity: .75; transform: scale(1); }
     }
   </style>
-</head>
-<body>
+<style>
+.back-to-express {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(10, 15, 30, 0.92);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-to-express:hover {
+  transform: translateY(-2px);
+  background: rgba(20, 30, 55, 0.98);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 600px) {
+  .back-to-express {
+    top: 12px;
+    right: 12px;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}
+</style></head>
+<body><a href="/#who-we-help" class="back-to-express">&larr; Back to Express It</a>
   <main class="rf-game" id="rf-game" aria-label="Rainbow Focus color memory game">
     <div class="rf-orb rf-orb-a" aria-hidden="true"></div>
     <div class="rf-orb rf-orb-b" aria-hidden="true"></div>
