@@ -11,7 +11,7 @@ export function GameLayout({ game }: { game: Game }) {
     <main id="main-content" className="min-h-screen bg-[#080A1A] px-4 pb-16 pt-28 text-white">
       <div className="container-shell">
         <Link
-          href="/#mind-gym"
+          href="/mind-gym"
           className="touch-target mb-8 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-3 font-bold text-white backdrop-blur-xl transition-colors duration-200 hover:bg-white hover:text-ink"
         >
           <ArrowLeft className="h-5 w-5" aria-hidden="true" />
@@ -77,7 +77,7 @@ export function GameLayout({ game }: { game: Game }) {
               <h2 className="mt-2 font-display text-3xl font-black">Continue exploring</h2>
             </div>
             <Link
-              href="/#framework"
+              href="/framework"
               className="touch-target inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 font-black text-white"
             >
               Continue Exploring

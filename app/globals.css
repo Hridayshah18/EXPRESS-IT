@@ -145,6 +145,23 @@ summary {
   transform: translateZ(0);
 }
 
+.parent-lottie-shell {
+  will-change: transform;
+  transform: translateZ(0);
+  animation: parent-lottie-idle 5.6s ease-in-out infinite;
+}
+
+@keyframes parent-lottie-idle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
 /* Video-only framework section. Playback is controlled by native IntersectionObserver. */
 .framework-video-section {
   position: relative;
@@ -358,6 +375,10 @@ summary {
 
   .safe-parallax {
     transform: none !important;
+  }
+
+  .parent-lottie-shell {
+    animation: none;
   }
 
   .framework-video-media {

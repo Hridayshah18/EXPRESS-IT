@@ -1,6 +1,14 @@
 import { Sparkles } from "lucide-react";
+import Link from "next/link";
 
-const links = ["Programs", "Mind Gym", "Resources", "Contact", "Social"];
+const links = [
+  { label: "Home", href: "/" },
+  { label: "Framework", href: "/framework" },
+  { label: "Programs", href: "/programs" },
+  { label: "Mind Gym", href: "/mind-gym" },
+  { label: "Parent Hub", href: "/parent-hub" },
+  { label: "Contact", href: "/#contact" },
+];
 
 export function Footer() {
   return (
@@ -15,13 +23,13 @@ export function Footer() {
         </div>
         <nav aria-label="Footer navigation" className="flex flex-wrap gap-2">
           {links.map((link) => (
-            <a
-              key={link}
-              href={link === "Contact" ? "#contact" : `#${link.toLowerCase().replace(" ", "-")}`}
+            <Link
+              key={link.href}
+              href={link.href}
               className="touch-target rounded-full bg-white/10 px-4 py-3 text-sm font-bold text-slate-200 hover:bg-white hover:text-ink"
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </nav>
       </div>

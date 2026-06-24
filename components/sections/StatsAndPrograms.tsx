@@ -3,6 +3,7 @@
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Stagger, StaggerItem, TiltCard } from "@/components/MotionPrimitives";
@@ -116,13 +117,13 @@ export function StatsAndPrograms() {
                     </div>
                     <div className="p-5">
                       <p className="text-sm leading-6 text-slate-600">{program.description}</p>
-                      <a
-                        href="#contact"
+                      <Link
+                        href="/#contact"
                         className="touch-target mt-5 inline-flex items-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-black text-white transition-colors duration-200 hover:bg-primary"
                       >
                         Learn More
                         <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                      </a>
+                      </Link>
                     </div>
                   </article>
                 </TiltCard>

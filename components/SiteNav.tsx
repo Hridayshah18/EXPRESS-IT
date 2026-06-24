@@ -37,19 +37,19 @@ export function SiteNav({ compact = false }: SiteNavProps) {
         {!compact ? (
           <div className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="touch-target rounded-full px-4 py-3 text-sm font-bold text-slate-700 transition-colors duration-200 hover:bg-slate-900 hover:text-white"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
         ) : null}
 
         <Link
-          href={compact ? "/#mind-gym" : "#contact"}
+          href={compact ? "/mind-gym" : "/programs"}
           className="touch-target hidden items-center rounded-full bg-ink px-5 py-3 text-sm font-black text-white shadow-soft transition-transform duration-200 hover:-translate-y-0.5 md:inline-flex"
         >
           {compact ? "Explore Tools" : "Start Journey"}
@@ -75,14 +75,14 @@ export function SiteNav({ compact = false }: SiteNavProps) {
         )}
       >
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.href}
             href={item.href}
             className="touch-target block rounded-2xl px-4 py-3 font-bold text-slate-700 hover:bg-slate-100"
             onClick={() => setOpen(false)}
           >
             {item.label}
-          </a>
+          </Link>
         ))}
       </div>
     </motion.header>

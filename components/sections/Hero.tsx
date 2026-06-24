@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -106,19 +107,19 @@ export function Hero() {
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.82, delay: 0.66, ease: [0.22, 1, 0.36, 1] }}
           >
-            <a
-              href="#mind-gym"
+            <Link
+              href="/mind-gym"
               className="touch-target inline-flex items-center justify-center rounded-full bg-[#22C55E] px-7 py-4 font-black text-white shadow-[0_18px_48px_rgba(34,197,94,0.28)] transition-transform duration-300 hover:-translate-y-0.5"
             >
               Start Journey
-            </a>
-            <a
-              href="#programs"
+            </Link>
+            <Link
+              href="/programs"
               className="touch-target inline-flex items-center justify-center gap-2 rounded-full border border-cyan-200 bg-white/82 px-7 py-4 font-black text-cyan-950 shadow-soft backdrop-blur-xl transition-colors duration-300 hover:bg-cyan-950 hover:text-white"
             >
               <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
               Explore Programs
-            </a>
+            </Link>
           </motion.div>
         </div>
 

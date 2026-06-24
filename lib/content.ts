@@ -35,6 +35,9 @@ export type Portal = {
   range: string;
   description: string;
   color: string;
+  image: string;
+  imageAlt: string;
+  imagePosition: string;
   icon: LucideIcon;
 };
 
@@ -60,10 +63,11 @@ export type Game = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "Framework", href: "#framework" },
-  { label: "Programs", href: "#programs" },
-  { label: "Mind Gym", href: "#mind-gym" },
-  { label: "Parent Hub", href: "#parent-hub" },
+  { label: "Home", href: "/" },
+  { label: "Framework", href: "/framework" },
+  { label: "Programs", href: "/programs" },
+  { label: "Mind Gym", href: "/mind-gym" },
+  { label: "Parent Hub", href: "/parent-hub" },
 ];
 
 export const challenges: Challenge[] = [
@@ -121,6 +125,9 @@ export const portals: Portal[] = [
     description:
       "Playful emotional vocabulary, confidence rituals, and expression activities that make self-understanding feel natural.",
     color: "#22C55E",
+    image: "/images/audiences/kids-card.png",
+    imageAlt: "Children smiling while drawing together in a bright creative classroom.",
+    imagePosition: "center 38%",
     icon: Sparkles,
   },
   {
@@ -129,6 +136,9 @@ export const portals: Portal[] = [
     description:
       "Identity, resilience, communication, and pressure-management tools designed for modern teen attention patterns.",
     color: "#4F46E5",
+    image: "/images/audiences/teenagers-card.png",
+    imageAlt: "Teenagers collaborating in a classroom focused on empathy, resilience, and growth.",
+    imagePosition: "center 38%",
     icon: Orbit,
   },
   {
@@ -137,6 +147,9 @@ export const portals: Portal[] = [
     description:
       "Clear resources, workshops, and conversation frameworks that help families respond instead of react.",
     color: "#F59E0B",
+    image: "/images/audiences/parents-card.png",
+    imageAlt: "Parents and child sharing a warm conversation in a supportive home setting.",
+    imagePosition: "center 38%",
     icon: HeartHandshake,
   },
 ];
@@ -154,7 +167,7 @@ export const programs: Program[] = [
     audience: "Confidence through play",
     description:
       "Story-based expression, feelings vocabulary, kindness missions, and social confidence labs.",
-    image: "/images/programs/kids-programs.png",
+    image: "/images/programs/kids-programs-ordered.png",
     accent: "#22C55E",
     icon: Sparkles,
   },
@@ -163,7 +176,7 @@ export const programs: Program[] = [
     audience: "Pressure-proof skills",
     description:
       "Identity, exam resilience, communication, peer pressure, focus, and leadership experiences.",
-    image: "/images/programs/teen-programs.png",
+    image: "/images/programs/teen-programs-ordered.png",
     accent: "#4F46E5",
     icon: Zap,
   },
@@ -172,7 +185,7 @@ export const programs: Program[] = [
     audience: "Calmer homes",
     description:
       "Practical conversation tools for emotions, screen habits, confidence, and academic pressure.",
-    image: "/images/programs/parent-workshops.png",
+    image: "/images/programs/parent-workshops-ordered.png",
     accent: "#F59E0B",
     icon: HeartHandshake,
   },
@@ -181,7 +194,7 @@ export const programs: Program[] = [
     audience: "Whole-campus growth",
     description:
       "Assemblies, workshops, educator resources, and wellbeing programs designed for repeat impact.",
-    image: "/images/programs/school-partnerships.png",
+    image: "/images/programs/school-partnerships-ordered.png",
     accent: "#14B8A6",
     icon: Landmark,
   },

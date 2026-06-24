@@ -1,15 +1,79 @@
 "use client";
 
-import { ArrowRight, BookOpen, CalendarCheck, MessageSquareHeart, Wrench } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/MotionPrimitives";
+import { ParentHubLottie, type ParentHubLottieKind } from "@/components/ParentHubLottie";
 
-const resources = [
-  { title: "Parenting Resources", icon: BookOpen, detail: "Short guides for pressure, confidence, emotions, and screen habits." },
-  { title: "Communication Tips", icon: MessageSquareHeart, detail: "Conversation starters that lower defensiveness and raise clarity." },
-  { title: "Workshops", icon: CalendarCheck, detail: "Live and school-linked sessions for families navigating modern childhood." },
-  { title: "Guides", icon: Wrench, detail: "Practical toolkits for recurring family challenges." },
+type ParentResource = {
+  title: string;
+  animation: ParentHubLottieKind;
+  detail: string;
+};
+
+const resources: ParentResource[] = [
+  {
+    title: "Parenting Resources",
+    animation: "book",
+    detail: "Short guides for pressure, confidence, emotions, and screen habits.",
+  },
+  {
+    title: "Communication Tips",
+    animation: "speech",
+    detail: "Conversation starters that lower defensiveness and raise clarity.",
+  },
+  {
+    title: "Workshops",
+    animation: "calendar",
+    detail: "Live and school-linked sessions for families navigating modern childhood.",
+  },
+  {
+    title: "Guides",
+    animation: "path",
+    detail: "Practical toolkits for recurring family challenges.",
+  },
 ];
+
+function ParentResourceCard({
+  resource,
+  index,
+}: {
+  resource: ParentResource;
+  index: number;
+}) {
+  const [playSignal, setPlaySignal] = useState(0);
+
+  const playAnimation = () => {
+    setPlaySignal((value) => value + 1);
+  };
+
+  return (
+    <article
+      className="dark-glass rounded-[1.75rem] p-6"
+      onFocusCapture={playAnimation}
+      onMouseEnter={playAnimation}
+      onPointerDown={playAnimation}
+    >
+      <ParentHubLottie
+        kind={resource.animation}
+        label={`${resource.title} animation`}
+        playSignal={playSignal}
+        delay={index * 180}
+      />
+      <h3 className="mt-7 font-display text-2xl font-black">{resource.title}</h3>
+      <p className="mt-3 leading-7 text-slate-200">{resource.detail}</p>
+      <Link
+        href="/#contact"
+        className="touch-target mt-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-black text-ink"
+      >
+        Request access
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      </Link>
+    </article>
+  );
+}
 
 export function ParentHub() {
   return (
@@ -25,27 +89,11 @@ export function ParentHub() {
           />
 
           <Stagger className="grid gap-4 sm:grid-cols-2">
-            {resources.map((resource) => {
-              const Icon = resource.icon;
-              return (
-                <StaggerItem key={resource.title}>
-                  <article className="dark-glass rounded-[1.75rem] p-6">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-400 p-3 text-ink">
-                      <Icon className="h-7 w-7" aria-hidden="true" />
-                    </div>
-                    <h3 className="mt-7 font-display text-2xl font-black">{resource.title}</h3>
-                    <p className="mt-3 leading-7 text-slate-200">{resource.detail}</p>
-                    <a
-                      href="#contact"
-                      className="touch-target mt-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-black text-ink"
-                    >
-                      Request access
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </article>
-                </StaggerItem>
-              );
-            })}
+            {resources.map((resource, index) => (
+              <StaggerItem key={resource.title}>
+                <ParentResourceCard resource={resource} index={index} />
+              </StaggerItem>
+            ))}
           </Stagger>
         </div>
       </div>

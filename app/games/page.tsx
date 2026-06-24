@@ -26,7 +26,7 @@ export default function GamesIndexPage() {
             ))}
           </div>
           <Link
-            href="/#mind-gym"
+            href="/mind-gym"
             className="touch-target mt-10 inline-flex items-center rounded-full bg-white px-5 py-3 font-black text-ink"
           >
             Back to Mind Gym
