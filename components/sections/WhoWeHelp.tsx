@@ -7,7 +7,7 @@ import { portals } from "@/lib/content";
 
 export function WhoWeHelp() {
   return (
-    <section className="section-shell bg-paper" aria-labelledby="who-title">
+    <section id="who-we-help" className="section-shell bg-paper" aria-labelledby="who-title">
       <div className="noise" />
       <div className="container-shell relative z-10">
         <SectionHeading

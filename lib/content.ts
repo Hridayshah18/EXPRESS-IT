@@ -50,6 +50,7 @@ export type Program = {
 export type Game = {
   slug: string;
   title: string;
+  href: string;
   description: string;
   difficulty: "Starter" | "Explorer" | "Challenger" | "Pro";
   progress: number;
@@ -190,6 +191,7 @@ export const games: Game[] = [
   {
     slug: "patternmind",
     title: "PATTERNMIND",
+    href: "/games/pattern-mind/index.html",
     description:
       "Notice emotional and visual patterns, then choose a calmer next step.",
     difficulty: "Starter",
@@ -201,6 +203,7 @@ export const games: Game[] = [
   {
     slug: "bollyverse",
     title: "BOLLYVERSE",
+    href: "/games/bollywood-game/index.html",
     description:
       "Read expressions, scenes, and social cues through guided reflection prompts.",
     difficulty: "Explorer",
@@ -212,6 +215,7 @@ export const games: Game[] = [
   {
     slug: "chain-reaction",
     title: "CHAIN REACTION",
+    href: "/games/chain-reaction/index.html",
     description:
       "Practice cause-and-effect thinking for choices, reactions, and relationships.",
     difficulty: "Challenger",
@@ -223,6 +227,7 @@ export const games: Game[] = [
   {
     slug: "rainbow-flow",
     title: "RAINBOW FLOW",
+    href: "/games/rainbow-flow/index.html",
     description:
       "Build focus and emotional regulation through gentle color-flow practice.",
     difficulty: "Pro",

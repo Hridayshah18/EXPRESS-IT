@@ -10,6 +10,11 @@ EXPRESS IT is a modern learning and expression platform concept for Gen Alpha, G
 - Express framework content
 - Programs, Mind Gym, Parent Hub, and Contact sections
 - Mind Gym practice routes under `/games`
+- Integrated browser games under the `games/` directory:
+  - Pattern Mind
+  - Bollywood Game
+  - Chain Reaction
+  - Rainbow Flow
 - Reduced-motion and mobile performance considerations
 
 ## Getting Started
