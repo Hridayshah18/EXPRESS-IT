@@ -6,6 +6,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  allowedDevOrigins: ["192.168.1.9"],
   turbopack: {
     root,
   },

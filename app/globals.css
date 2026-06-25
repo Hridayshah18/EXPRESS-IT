@@ -185,15 +185,17 @@ summary {
 .framework-video-section {
   position: relative;
   isolation: isolate;
-  min-height: 86svh;
+  min-height: 100svh;
+  width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 7rem 1rem;
+  padding: clamp(4.5rem, 8vw, 7rem) 0;
   background:
-    radial-gradient(circle at 76% 68%, rgba(255, 190, 72, 0.16), transparent 20rem),
-    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.08), transparent 34rem),
+    radial-gradient(circle at 76% 68%, rgba(255, 190, 72, 0.2), transparent 24rem),
+    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.1), transparent 38rem),
+    linear-gradient(180deg, #050712 0%, #11131d 50%, #050712 100%),
     #050712;
   color: #ffffff;
 }
@@ -207,7 +209,7 @@ summary {
   object-fit: contain;
   object-position: center;
   background: #050712;
-  filter: brightness(0.78) contrast(1.08) saturate(1.04) hue-rotate(2deg);
+  filter: brightness(0.72) contrast(1.08) saturate(1.04) hue-rotate(2deg);
   transform: translateZ(0);
   backface-visibility: hidden;
   transition:
@@ -217,7 +219,7 @@ summary {
 }
 
 .framework-video-section--revealed .framework-video-media {
-  filter: brightness(1.13) contrast(1.1) saturate(1.09) hue-rotate(2deg);
+  filter: brightness(1.14) contrast(1.1) saturate(1.1) hue-rotate(2deg);
   transform: translateZ(0);
 }
 
@@ -227,9 +229,9 @@ summary {
   z-index: -2;
   pointer-events: none;
   background:
-    linear-gradient(105deg, rgba(255, 214, 170, 0.14), rgba(255, 255, 255, 0.04) 42%, rgba(14, 165, 233, 0.04)),
-    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.12), transparent 34rem),
-    radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.2));
+    linear-gradient(105deg, rgba(255, 214, 170, 0.16), rgba(255, 255, 255, 0.04) 42%, rgba(14, 165, 233, 0.035)),
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.14), transparent 38rem),
+    radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.16));
   mix-blend-mode: soft-light;
   opacity: 0.48;
   transform: translateZ(0);
@@ -237,7 +239,7 @@ summary {
 }
 
 .framework-video-section--revealed .framework-video-grade {
-  opacity: 0.54;
+  opacity: 0.42;
 }
 
 .framework-video-overlay {
@@ -246,19 +248,19 @@ summary {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.26)),
-    linear-gradient(180deg, rgba(5, 7, 18, 0.54), rgba(5, 7, 18, 0.44) 45%, rgba(5, 7, 18, 0.58));
+    radial-gradient(ellipse at center, transparent 44%, rgba(0, 0, 0, 0.22)),
+    linear-gradient(180deg, rgba(5, 7, 18, 0.56), rgba(5, 7, 18, 0.44) 45%, rgba(5, 7, 18, 0.58));
   opacity: 1;
   transform: translateZ(0);
   transition: opacity 1400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .framework-video-section--revealed .framework-video-overlay {
-  opacity: 0.08;
+  opacity: 0.04;
 }
 
 .framework-video-content {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1200px, calc(100% - 2rem));
   margin-inline: auto;
   text-align: center;
   transform: translateZ(0);
@@ -340,8 +342,19 @@ summary {
   }
 
   .framework-video-section {
-    min-height: min(68svh, 560px);
-    padding: 4.5rem 1rem;
+    min-height: 0;
+    height: clamp(220px, 58vw, 320px);
+    padding: 0;
+    background: #050712;
+  }
+
+  .framework-video-media {
+    object-fit: cover;
+    background: transparent;
+  }
+
+  .framework-video-content {
+    display: none;
   }
 
   .framework-video-grade {
@@ -365,15 +378,11 @@ summary {
 
 @media (max-width: 767px) and (max-aspect-ratio: 3 / 4) {
   .framework-video-section {
-    min-height: clamp(240px, 64vw, 420px);
-    background:
-      radial-gradient(circle at 78% 58%, rgba(255, 190, 72, 0.22), transparent 13rem),
-      radial-gradient(circle at 50% 48%, rgba(255, 202, 149, 0.28), transparent 22rem),
-      linear-gradient(180deg, #060712 0%, #2f281c 48%, #060712 100%);
+    height: clamp(220px, 62vw, 320px);
   }
 
   .framework-video-media {
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -385,7 +394,7 @@ summary {
 
 @media (min-width: 1024px) {
   .framework-video-section {
-    min-height: min(86svh, 900px);
+    min-height: 100svh;
   }
 
   .framework-video-heading {

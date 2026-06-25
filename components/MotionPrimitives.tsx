@@ -1,6 +1,7 @@
 "use client";
 
 import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -11,8 +12,19 @@ type RevealProps = {
   as?: "div" | "section" | "article" | "li";
 };
 
+function useHydrationSafeReducedMotion() {
+  const framerReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted ? Boolean(framerReducedMotion) : false;
+}
+
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
   const MotionTag = motion[as];
 
   return (
@@ -29,7 +41,7 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
 }
 
 export function Stagger({ children, className }: { children: ReactNode; className?: string }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
 
   return (
     <motion.div
@@ -54,7 +66,7 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
 
   return (
     <motion.div
@@ -79,7 +91,7 @@ export function TiltCard({
   className?: string;
   accent?: string;
 }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
 
   return (
     <motion.div
