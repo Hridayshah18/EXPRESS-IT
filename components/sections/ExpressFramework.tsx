@@ -130,7 +130,7 @@ export function ExpressFramework() {
         src="/videos/five-stage-world.mp4"
         muted
         playsInline
-        preload="auto"
+        preload="none"
       />
 
       <div className="framework-video-grade" aria-hidden="true" />

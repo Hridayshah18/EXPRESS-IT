@@ -17,7 +17,7 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
 
   return (
     <MotionTag
-      className={className}
+      className={cn("mobile-motion-visible", className)}
       initial={reduceMotion ? false : { opacity: 0, y: 28 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.22 }}
@@ -33,7 +33,7 @@ export function Stagger({ children, className }: { children: ReactNode; classNam
 
   return (
     <motion.div
-      className={className}
+      className={cn("mobile-motion-visible", className)}
       initial={reduceMotion ? false : "hidden"}
       whileInView={reduceMotion ? undefined : "visible"}
       viewport={{ once: true, amount: 0.18 }}
@@ -58,7 +58,7 @@ export function StaggerItem({
 
   return (
     <motion.div
-      className={className}
+      className={cn("mobile-motion-visible", className)}
       variants={{
         hidden: reduceMotion ? {} : { opacity: 0, y: 24, scale: 0.985 },
         visible: reduceMotion ? {} : { opacity: 1, y: 0, scale: 1 },

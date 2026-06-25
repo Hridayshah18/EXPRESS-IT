@@ -46,7 +46,7 @@ export function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#ECFEFF] px-4 pb-12 pt-28 text-cyan-950 md:pt-32">
+    <section className="relative min-h-dvh overflow-hidden bg-[#ECFEFF] px-4 pb-16 pt-24 text-cyan-950 md:min-h-screen md:pb-12 md:pt-32">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_18%,rgba(34,211,238,0.26),transparent_30rem),radial-gradient(circle_at_92%_78%,rgba(34,197,94,0.18),transparent_30rem),linear-gradient(180deg,#ECFEFF_0%,#F8FAFC_70%,#EEF2FF_100%)]" />
       <div className="absolute left-0 top-0 h-full w-[64%] bg-gradient-to-r from-[#ECFEFF] via-[#ECFEFF]/96 to-transparent" />
       <div className="noise opacity-20" />
@@ -64,10 +64,10 @@ export function Hero() {
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container-shell relative z-10 grid min-h-[calc(100vh-8rem)] items-center gap-10 md:grid-cols-[1.02fr_0.88fr] lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="container-shell relative z-10 grid min-h-[auto] items-center gap-8 md:min-h-[calc(100vh-8rem)] md:grid-cols-[1.02fr_0.88fr] md:gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-3xl">
           <motion.div
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-white/82 px-4 py-2 text-sm font-bold text-cyan-800 shadow-soft backdrop-blur-xl"
+            className="mobile-motion-visible mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-white/82 px-4 py-2 text-sm font-bold text-cyan-800 shadow-soft backdrop-blur-xl"
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
@@ -76,11 +76,11 @@ export function Hero() {
             Learn. Express. Grow.
           </motion.div>
 
-          <h1 className="font-display text-5xl font-black leading-[0.96] md:text-7xl lg:text-8xl">
+          <h1 className="font-display text-[3.25rem] font-black leading-[0.96] sm:text-6xl md:text-7xl lg:text-8xl">
             {words.map((word, index) => (
               <motion.span
                 key={word.label}
-                className="block"
+                className="mobile-motion-visible block"
                 style={{ color: word.color }}
                 initial={reduceMotion ? false : { opacity: 0, y: 44, filter: "blur(10px)" }}
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -92,7 +92,7 @@ export function Hero() {
           </h1>
 
           <motion.p
-            className="mt-7 max-w-2xl text-lg leading-8 text-cyan-950/78 md:text-xl"
+            className="mobile-motion-visible mt-6 max-w-2xl text-base leading-7 text-cyan-950/78 md:mt-7 md:text-xl md:leading-8"
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.82, delay: 0.48, ease: [0.22, 1, 0.36, 1] }}
@@ -102,29 +102,66 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            className="mt-9 flex flex-col gap-3 sm:flex-row"
+            className="mobile-motion-visible mt-8 flex flex-col gap-3 sm:flex-row md:mt-9"
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.82, delay: 0.66, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link
               href="/mind-gym"
-              className="touch-target inline-flex items-center justify-center rounded-full bg-[#22C55E] px-7 py-4 font-black text-white shadow-[0_18px_48px_rgba(34,197,94,0.28)] transition-transform duration-300 hover:-translate-y-0.5"
+              className="touch-target inline-flex w-full items-center justify-center rounded-full bg-[#22C55E] px-7 py-4 font-black text-white shadow-[0_18px_48px_rgba(34,197,94,0.28)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
             >
               Start Journey
             </Link>
             <Link
               href="/programs"
-              className="touch-target inline-flex items-center justify-center gap-2 rounded-full border border-cyan-200 bg-white/82 px-7 py-4 font-black text-cyan-950 shadow-soft backdrop-blur-xl transition-colors duration-300 hover:bg-cyan-950 hover:text-white"
+              className="touch-target inline-flex w-full items-center justify-center gap-2 rounded-full border border-cyan-200 bg-white/82 px-7 py-4 font-black text-cyan-950 shadow-soft backdrop-blur-xl transition-colors duration-300 hover:bg-cyan-950 hover:text-white sm:w-auto"
             >
               <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
               Explore Programs
             </Link>
           </motion.div>
+
+          <motion.div
+            className="mobile-motion-visible mt-8 grid gap-3 md:hidden"
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.72, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Growth signals"
+          >
+            {signalCards.map((card) => {
+              const Icon = card.icon;
+
+              return (
+                <div
+                  key={card.title}
+                  className="flex items-center justify-between rounded-[1.5rem] border border-cyan-100 bg-white/82 p-4 shadow-soft backdrop-blur-xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white"
+                      style={{ backgroundColor: card.color }}
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <p className="font-display text-base font-black text-cyan-950">
+                        {card.title}
+                      </p>
+                      <p className="text-xs font-bold uppercase tracking-normal text-cyan-800/70">
+                        {card.value}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
 
         <motion.div
-          className="relative mx-auto min-h-[440px] w-full max-w-[540px] md:min-h-[520px]"
+          className="relative mx-auto hidden min-h-[520px] w-full max-w-[540px] md:block"
           initial={reduceMotion ? false : { opacity: 0, scale: 0.96, y: 28 }}
           animate={reduceMotion ? undefined : { opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.05, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
@@ -202,7 +239,7 @@ export function Hero() {
 
       <motion.a
         href="#challenges"
-        className="absolute bottom-5 left-1/2 z-10 inline-flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-cyan-800"
+        className="absolute bottom-4 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-cyan-800 md:inline-flex"
         initial={reduceMotion ? false : { opacity: 0 }}
         animate={reduceMotion ? undefined : { opacity: 1, y: [0, 7, 0] }}
         transition={{ duration: 2.2, repeat: reduceMotion ? 0 : Infinity, delay: 1 }}

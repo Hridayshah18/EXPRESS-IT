@@ -11,12 +11,17 @@ type SiteNavProps = {
   compact?: boolean;
 };
 
+const mobileSectionLinks = [
+  { label: "Who We Help", href: "/#who-we-help" },
+  { label: "Contact", href: "/#contact" },
+];
+
 export function SiteNav({ compact = false }: SiteNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <motion.header
-      className="fixed left-4 right-4 top-4 z-40"
+      className="mobile-motion-visible fixed left-4 right-4 top-4 z-40"
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -61,6 +66,7 @@ export function SiteNav({ compact = false }: SiteNavProps) {
             className="touch-target inline-flex items-center justify-center rounded-full bg-white text-ink shadow-soft md:hidden"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
             onClick={() => setOpen((value) => !value)}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -69,12 +75,16 @@ export function SiteNav({ compact = false }: SiteNavProps) {
       </nav>
 
       <div
+        id="mobile-navigation"
+        aria-hidden={!open}
         className={cn(
-          "glass-panel mt-3 rounded-3xl p-3 md:hidden",
-          open ? "block" : "hidden",
+          "glass-panel mt-3 overflow-hidden rounded-3xl transition-all duration-200 ease-out md:hidden",
+          open
+            ? "max-h-[32rem] translate-y-0 p-3 opacity-100"
+            : "pointer-events-none max-h-0 -translate-y-2 p-0 opacity-0",
         )}
       >
-        {navItems.map((item) => (
+        {[...navItems, ...mobileSectionLinks].map((item) => (
           <Link
             key={item.href}
             href={item.href}

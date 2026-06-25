@@ -14,6 +14,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
   background: #f8fafc;
   overscroll-behavior-x: none;
 }
@@ -42,6 +43,24 @@ a,
 input,
 textarea {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: anywhere;
 }
 
 button,
@@ -301,6 +320,17 @@ summary {
 }
 
 @media (max-width: 767px) {
+  .mobile-motion-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
   .section-shell {
     padding-block: 5rem;
   }
@@ -364,6 +394,10 @@ summary {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {

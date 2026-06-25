@@ -8,7 +8,7 @@ export function GameLayout({ game }: { game: Game }) {
   const Icon = game.icon;
 
   return (
-    <main id="main-content" className="min-h-screen bg-[#080A1A] px-4 pb-16 pt-28 text-white">
+    <main id="main-content" className="min-h-dvh bg-[#080A1A] px-4 pb-16 pt-24 text-white md:min-h-screen md:pt-28">
       <div className="container-shell">
         <Link
           href="/mind-gym"
@@ -18,25 +18,25 @@ export function GameLayout({ game }: { game: Game }) {
           Back to Express It
         </Link>
 
-        <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className={`relative min-h-[520px] overflow-hidden rounded-[2rem] bg-gradient-to-br ${game.bg} p-6`}>
+        <section className="grid gap-5 md:gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className={`relative min-h-[420px] overflow-hidden rounded-[1.75rem] bg-gradient-to-br ${game.bg} p-5 md:min-h-[520px] md:rounded-[2rem] md:p-6`}>
             <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
             <div className="relative z-10 flex h-full flex-col justify-between">
-              <div className="flex items-start justify-between">
+              <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="font-mono text-xs font-bold uppercase tracking-normal text-white/75">
                     Express It practice space
                   </p>
-                  <h1 className="mt-3 font-display text-5xl font-black md:text-7xl">
+                  <h1 className="mt-3 font-display text-4xl font-black sm:text-5xl md:text-7xl">
                     {game.title}
                   </h1>
                 </div>
-                <div className="rounded-3xl bg-white/15 p-5 backdrop-blur-xl">
+                <div className="rounded-3xl bg-white/15 p-4 backdrop-blur-xl md:p-5">
                   <Icon className="h-10 w-10" aria-hidden="true" />
                 </div>
               </div>
-              <div className="rounded-[1.5rem] border border-white/20 bg-black/20 p-6 backdrop-blur-xl">
-                <p className="text-lg font-bold">Practice placeholder</p>
+              <div className="rounded-[1.5rem] border border-white/20 bg-black/20 p-5 backdrop-blur-xl md:p-6">
+                <p className="text-base font-bold md:text-lg">Practice placeholder</p>
                 <p className="mt-2 max-w-2xl leading-7 text-white/80">
                   The routing, layout, reflection tools, progress space, and return path are ready.
                   Guided practice will plug into this area without moving users outside Express It.
@@ -45,7 +45,7 @@ export function GameLayout({ game }: { game: Game }) {
             </div>
           </div>
 
-          <aside className="dark-glass rounded-[2rem] p-6">
+          <aside className="dark-glass rounded-[1.75rem] p-5 md:rounded-[2rem] md:p-6">
             <h2 className="font-display text-3xl font-black">Mission Brief</h2>
             <p className="mt-4 leading-7 text-slate-200">{game.description}</p>
             <div className="mt-6 rounded-3xl bg-white/10 p-5">
@@ -68,7 +68,7 @@ export function GameLayout({ game }: { game: Game }) {
           </aside>
         </section>
 
-        <section className="mt-8 rounded-[2rem] bg-white p-6 text-ink">
+        <section className="mt-8 rounded-[1.75rem] bg-white p-5 text-ink md:rounded-[2rem] md:p-6">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
             <div>
               <p className="font-mono text-xs font-bold uppercase tracking-normal text-primary">

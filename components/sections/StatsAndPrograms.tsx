@@ -88,14 +88,14 @@ export function StatsAndPrograms() {
             copy="Each program focuses on practical emotional skills, communication habits, and confidence that students can use beyond the classroom."
           />
 
-          <div className="mt-12 flex snap-x gap-5 overflow-x-auto pb-5 md:grid md:grid-cols-4 md:overflow-visible">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 md:mt-12 md:grid-cols-4">
             {programs.map((program) => {
               const Icon = program.icon;
               return (
                 <TiltCard
                   key={program.title}
                   accent={program.accent}
-                  className="min-w-[280px] snap-start rounded-[1.75rem] md:min-w-0"
+                  className="rounded-[1.75rem]"
                 >
                   <article className="glass-panel h-full overflow-hidden rounded-[1.75rem]">
                     <div className="relative aspect-[4/5] overflow-hidden">

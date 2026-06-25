@@ -51,7 +51,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lexend.variable} ${atkinson.variable} ${spaceMono.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${lexend.variable} ${atkinson.variable} ${spaceMono.variable}`}
+    >
       <body>
         <a className="skip-link" href="#main-content">
           Skip to main content
