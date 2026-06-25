@@ -6,11 +6,13 @@ const root = dirname(fileURLToPath(import.meta.url));
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  allowedDevOrigins: ["192.168.1.9"],
   turbopack: {
     root,
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 88],
   },
   async redirects() {
     return [

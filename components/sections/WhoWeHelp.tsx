@@ -18,14 +18,14 @@ export function WhoWeHelp() {
           copy="Each audience gets a different doorway, but the same promise: expression becomes confidence when it is practiced safely."
         />
 
-        <Stagger className="mt-12 grid gap-5 md:grid-cols-3">
+        <Stagger className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3">
           {portals.map((portal) => {
             const Icon = portal.icon;
 
             return (
               <StaggerItem key={portal.title}>
                 <TiltCard accent={portal.color} className="h-full rounded-[2rem]">
-                  <article className="group/portal relative h-full min-h-[440px] overflow-hidden rounded-[2rem] border border-white/35 bg-ink p-7 text-white shadow-soft">
+                  <article className="group/portal relative h-full min-h-[360px] overflow-hidden rounded-[1.75rem] border border-white/35 bg-ink p-5 text-white shadow-soft md:min-h-[440px] md:rounded-[2rem] md:p-7">
                     <Image
                       src={portal.image}
                       alt={portal.imageAlt}
@@ -57,7 +57,7 @@ export function WhoWeHelp() {
                         <Icon className="h-8 w-8" aria-hidden="true" />
                       </div>
 
-                      <div className="mt-auto pt-24 [text-shadow:0_2px_18px_rgba(0,0,0,0.45)]">
+                      <div className="mt-auto pt-16 [text-shadow:0_2px_18px_rgba(0,0,0,0.45)] md:pt-24">
                         <div
                           className="mb-4 h-px w-16"
                           style={{ backgroundColor: portal.color }}
@@ -66,15 +66,15 @@ export function WhoWeHelp() {
                         <p className="font-mono text-xs font-bold uppercase tracking-normal text-white/78">
                           {portal.range}
                         </p>
-                        <h3 className="mt-3 font-display text-4xl font-black text-white">
+                        <h3 className="mt-3 font-display text-3xl font-black text-white md:text-4xl">
                           {portal.title}
                         </h3>
-                        <p className="mt-5 text-base leading-7 text-white/88">
+                        <p className="mt-4 text-sm leading-6 text-white/88 md:mt-5 md:text-base md:leading-7">
                           {portal.description}
                         </p>
                         <Link
                           href="/programs"
-                          className="touch-target mt-9 inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-ink shadow-soft transition-colors duration-300 hover:bg-ink hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                          className="touch-target mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-ink shadow-soft transition-colors duration-300 hover:bg-ink hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-fit md:mt-9"
                         >
                           Explore
                           <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

@@ -33,7 +33,7 @@ export function SectionHeading({
       >
         {eyebrow}
       </p>
-      <h2 className="font-display text-4xl font-black leading-[1.02] md:text-6xl">
+      <h2 className="font-display text-3xl font-black leading-[1.04] sm:text-4xl md:text-6xl md:leading-[1.02]">
         {title}
       </h2>
       {copy ? (

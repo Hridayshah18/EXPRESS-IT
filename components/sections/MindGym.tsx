@@ -25,11 +25,11 @@ export function MindGym() {
           tone="dark"
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <article className={`scanlines relative min-h-[470px] overflow-hidden rounded-[2rem] bg-gradient-to-br ${featured.bg} p-7 shadow-2xl`}>
+        <div className="mt-10 grid gap-5 md:mt-12 md:gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+          <article className={`scanlines relative min-h-[380px] overflow-hidden rounded-[1.75rem] bg-gradient-to-br ${featured.bg} p-5 shadow-2xl md:min-h-[470px] md:rounded-[2rem] md:p-7`}>
             <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/20 blur-3xl" />
             <div className="relative z-10 flex h-full flex-col justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full bg-white/20 px-4 py-2 text-sm font-black">
                   Featured Practice
                 </span>
@@ -41,10 +41,10 @@ export function MindGym() {
                 <p className="font-mono text-xs font-bold uppercase tracking-normal text-white/75">
                   Continue practicing
                 </p>
-                <h3 className="mt-3 font-display text-5xl font-black md:text-7xl">
+                <h3 className="mt-3 font-display text-4xl font-black sm:text-5xl md:text-7xl">
                   {featured.title}
                 </h3>
-                <p className="mt-4 max-w-xl text-lg leading-8 text-white/85">
+                <p className="mt-4 max-w-xl text-base leading-7 text-white/85 md:text-lg md:leading-8">
                   {featured.description}
                 </p>
                 <div className="mt-8">
@@ -55,7 +55,7 @@ export function MindGym() {
           </article>
 
           <div className="grid gap-5">
-            <article className="dark-glass rounded-[2rem] p-6">
+            <article className="dark-glass rounded-[1.75rem] p-5 md:rounded-[2rem] md:p-6">
               <div className="flex items-center gap-3">
                 <Trophy className="h-7 w-7 text-amber-200" aria-hidden="true" />
                 <h3 className="font-display text-2xl font-black">Achievements</h3>
@@ -68,7 +68,7 @@ export function MindGym() {
                 ))}
               </div>
             </article>
-            <article className="dark-glass rounded-[2rem] p-6">
+            <article className="dark-glass rounded-[1.75rem] p-5 md:rounded-[2rem] md:p-6">
               <div className="flex items-center gap-3">
                 <Zap className="h-7 w-7 text-emerald-200" aria-hidden="true" />
                 <h3 className="font-display text-2xl font-black">Coming Soon</h3>

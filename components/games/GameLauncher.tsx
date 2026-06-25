@@ -5,7 +5,7 @@ export function GameLauncher({ game, label = "Open practice" }: { game: Game; la
   return (
     <a
       href={game.href}
-      className="touch-target inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-ink shadow-soft transition-transform duration-200 hover:-translate-y-0.5"
+      className="touch-target inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-ink shadow-soft transition-transform duration-200 hover:-translate-y-0.5 sm:w-auto"
     >
       <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
       {label}

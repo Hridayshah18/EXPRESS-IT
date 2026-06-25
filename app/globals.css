@@ -14,6 +14,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
   background: #f8fafc;
   overscroll-behavior-x: none;
 }
@@ -42,6 +43,24 @@ a,
 input,
 textarea {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: anywhere;
 }
 
 button,
@@ -303,6 +322,17 @@ summary {
 }
 
 @media (max-width: 767px) {
+  .mobile-motion-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
   .section-shell {
     padding-block: 5rem;
   }
@@ -312,8 +342,19 @@ summary {
   }
 
   .framework-video-section {
-    min-height: clamp(520px, 92svh, 760px);
-    padding: 4.5rem 0;
+    min-height: 0;
+    height: clamp(220px, 58vw, 320px);
+    padding: 0;
+    background: #050712;
+  }
+
+  .framework-video-media {
+    object-fit: cover;
+    background: transparent;
+  }
+
+  .framework-video-content {
+    display: none;
   }
 
   .framework-video-grade {
@@ -337,15 +378,11 @@ summary {
 
 @media (max-width: 767px) and (max-aspect-ratio: 3 / 4) {
   .framework-video-section {
-    min-height: clamp(360px, 88svh, 680px);
-    background:
-      radial-gradient(circle at 78% 58%, rgba(255, 190, 72, 0.22), transparent 13rem),
-      radial-gradient(circle at 50% 48%, rgba(255, 202, 149, 0.28), transparent 22rem),
-      linear-gradient(180deg, #060712 0%, #2f281c 48%, #060712 100%);
+    height: clamp(220px, 62vw, 320px);
   }
 
   .framework-video-media {
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -366,6 +403,10 @@ summary {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {

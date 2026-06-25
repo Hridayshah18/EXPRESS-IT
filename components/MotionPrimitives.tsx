@@ -1,6 +1,7 @@
 "use client";
 
 import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -11,13 +12,24 @@ type RevealProps = {
   as?: "div" | "section" | "article" | "li";
 };
 
+function useHydrationSafeReducedMotion() {
+  const framerReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted ? Boolean(framerReducedMotion) : false;
+}
+
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
   const MotionTag = motion[as];
 
   return (
     <MotionTag
-      className={className}
+      className={cn("mobile-motion-visible", className)}
       initial={reduceMotion ? false : { opacity: 0, y: 28 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.22 }}
@@ -29,11 +41,11 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
 }
 
 export function Stagger({ children, className }: { children: ReactNode; className?: string }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
 
   return (
     <motion.div
-      className={className}
+      className={cn("mobile-motion-visible", className)}
       initial={reduceMotion ? false : "hidden"}
       whileInView={reduceMotion ? undefined : "visible"}
       viewport={{ once: true, amount: 0.18 }}
@@ -54,11 +66,11 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
 
   return (
     <motion.div
-      className={className}
+      className={cn("mobile-motion-visible", className)}
       variants={{
         hidden: reduceMotion ? {} : { opacity: 0, y: 24, scale: 0.985 },
         visible: reduceMotion ? {} : { opacity: 1, y: 0, scale: 1 },
@@ -79,7 +91,7 @@ export function TiltCard({
   className?: string;
   accent?: string;
 }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
 
   return (
     <motion.div

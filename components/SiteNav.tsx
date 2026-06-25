@@ -11,12 +11,21 @@ type SiteNavProps = {
   compact?: boolean;
 };
 
+const mobileLinks = [
+  { label: "Home", href: "/" },
+  { label: "Framework", href: "/framework" },
+  { label: "Programs", href: "/programs" },
+  { label: "Mind Gym", href: "/mind-gym" },
+  { label: "Parent Hub", href: "/parent-hub" },
+  { label: "Start Journey", href: "/programs" },
+];
+
 export function SiteNav({ compact = false }: SiteNavProps) {
-  const [open, setOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <motion.header
-      className="fixed left-4 right-4 top-4 z-40"
+      className="mobile-motion-visible fixed left-4 right-4 top-4 z-40"
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -58,33 +67,37 @@ export function SiteNav({ compact = false }: SiteNavProps) {
         {!compact ? (
           <button
             type="button"
-            className="touch-target inline-flex items-center justify-center rounded-full bg-white text-ink shadow-soft md:hidden"
-            aria-label={open ? "Close navigation" : "Open navigation"}
-            aria-expanded={open}
-            onClick={() => setOpen((value) => !value)}
+            className="touch-target relative z-50 inline-flex items-center justify-center rounded-full bg-white text-ink shadow-soft md:hidden"
+            aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         ) : null}
       </nav>
 
-      <div
-        className={cn(
-          "glass-panel mt-3 rounded-3xl p-3 md:hidden",
-          open ? "block" : "hidden",
-        )}
-      >
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="touch-target block rounded-2xl px-4 py-3 font-bold text-slate-700 hover:bg-slate-100"
-            onClick={() => setOpen(false)}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div>
+      {isMenuOpen ? (
+        <div
+          id="mobile-navigation"
+          className="glass-panel relative z-50 mt-3 rounded-3xl p-3 shadow-2xl transition-all duration-200 ease-out md:hidden"
+        >
+          {mobileLinks.map((item) => (
+            <Link
+              key={`${item.label}-${item.href}`}
+              href={item.href}
+              className={cn(
+                "touch-target block rounded-2xl px-4 py-3 font-bold text-slate-700 hover:bg-slate-100",
+                item.label === "Start Journey" && "mt-2 bg-ink text-white hover:bg-primary hover:text-white",
+              )}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      ) : null}
     </motion.header>
   );
 }

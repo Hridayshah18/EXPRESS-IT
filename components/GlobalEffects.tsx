@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Lenis from "lenis";
 
 export function GlobalEffects() {
-  const [progress, setProgress] = useState(0);
   const [showCursorGlow, setShowCursorGlow] = useState(false);
 
   useEffect(() => {
@@ -15,6 +14,11 @@ export function GlobalEffects() {
       ("deviceMemory" in navigator && Number(navigator.deviceMemory) <= 4);
     let lenis: Lenis | null = null;
     let raf = 0;
+    let progressFrame = 0;
+    let pointerFrame = 0;
+    let pointerX = window.innerWidth / 2;
+    let pointerY = window.innerHeight * 0.35;
+    const progressBar = document.querySelector<HTMLElement>("[data-scroll-progress]");
 
     setShowCursorGlow(!reduceMotion && !coarsePointer && !lowPowerDevice);
 
@@ -35,23 +39,46 @@ export function GlobalEffects() {
 
     const updateProgress = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
+      const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progressBar?.style.setProperty("transform", `scaleX(${progress})`);
+    };
+
+    const scheduleProgressUpdate = () => {
+      if (progressFrame) return;
+
+      progressFrame = requestAnimationFrame(() => {
+        progressFrame = 0;
+        updateProgress();
+      });
     };
 
     const updatePointer = (event: PointerEvent) => {
-      if (coarsePointer || lowPowerDevice) return;
-      document.documentElement.style.setProperty("--cursor-x", `${event.clientX}px`);
-      document.documentElement.style.setProperty("--cursor-y", `${event.clientY}px`);
+      if (reduceMotion || coarsePointer || lowPowerDevice) return;
+
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+
+      if (pointerFrame) return;
+
+      pointerFrame = requestAnimationFrame(() => {
+        pointerFrame = 0;
+        document.documentElement.style.setProperty("--cursor-x", `${pointerX}px`);
+        document.documentElement.style.setProperty("--cursor-y", `${pointerY}px`);
+      });
     };
 
     updateProgress();
-    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("scroll", scheduleProgressUpdate, { passive: true });
     window.addEventListener("pointermove", updatePointer, { passive: true });
+    window.addEventListener("resize", scheduleProgressUpdate);
 
     return () => {
-      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("scroll", scheduleProgressUpdate);
       window.removeEventListener("pointermove", updatePointer);
+      window.removeEventListener("resize", scheduleProgressUpdate);
       if (raf) cancelAnimationFrame(raf);
+      if (progressFrame) cancelAnimationFrame(progressFrame);
+      if (pointerFrame) cancelAnimationFrame(pointerFrame);
       lenis?.destroy();
     };
   }, []);
@@ -60,8 +87,8 @@ export function GlobalEffects() {
     <>
       <div
         aria-hidden="true"
-        className="fixed left-0 top-0 z-50 h-1 origin-left bg-gradient-to-r from-primary via-secondary to-accent"
-        style={{ width: `${Math.round(progress * 100)}%` }}
+        data-scroll-progress
+        className="fixed left-0 top-0 z-50 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-primary via-secondary to-accent will-change-transform"
       />
       {showCursorGlow ? <div aria-hidden="true" className="cursor-glow" /> : null}
     </>

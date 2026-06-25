@@ -8,7 +8,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import Link from "next/link";
-import { useRef, type ComponentType } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -156,6 +156,17 @@ const neuralNodes = [
   { cx: 257, cy: 286, color: "#22C55E", delay: 3.2 },
   { cx: 316, cy: 316, color: "#A855F7", delay: 3.6 },
 ];
+
+function useHydrationSafeReducedMotion() {
+  const framerReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted ? Boolean(framerReducedMotion) : false;
+}
 
 function BackgroundParticles({ reduceMotion }: { reduceMotion: boolean }) {
   return (
@@ -311,14 +322,15 @@ function BrainVisualization({ reduceMotion, rotate, y, glowOpacity }: BrainVisua
             key={`${node.cx}-${node.cy}`}
             cx={node.cx}
             cy={node.cy}
-            r="4.5"
+            r={4.5}
             fill={node.color}
             filter="url(#neuralGlow)"
+            style={{ transformBox: "fill-box", transformOrigin: "center" }}
             animate={
               reduceMotion
                 ? undefined
                 : {
-                    r: [3.5, 6.5, 3.5],
+                    scale: [0.8, 1.4, 0.8],
                     opacity: [0.58, 1, 0.58],
                   }
             }
@@ -378,7 +390,7 @@ function BrainVisualization({ reduceMotion, rotate, y, glowOpacity }: BrainVisua
 }
 
 export function Hero() {
-  const reduceMotion = Boolean(useReducedMotion());
+  const reduceMotion = useHydrationSafeReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -392,7 +404,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen overflow-hidden bg-[#020617] px-4 pb-14 pt-28 text-white md:pt-32"
+      className="relative min-h-dvh overflow-hidden bg-[#020617] px-4 pb-16 pt-24 text-white md:min-h-screen md:pb-14 md:pt-32"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_20%,rgba(168,85,247,0.22),transparent_30rem),radial-gradient(circle_at_62%_58%,rgba(56,189,248,0.14),transparent_34rem),radial-gradient(circle_at_18%_82%,rgba(34,197,94,0.12),transparent_26rem),linear-gradient(135deg,#020617_0%,#06111F_48%,#020617_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-[#050712]" />
@@ -406,7 +418,7 @@ export function Hero() {
       </motion.div>
 
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.16]"
+        className="absolute inset-0 hidden h-full w-full opacity-[0.16] md:block"
         viewBox="0 0 1440 900"
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -434,10 +446,10 @@ export function Hero() {
         </defs>
       </svg>
 
-      <div className="container-shell relative z-10 grid min-h-[calc(100vh-7rem)] items-center gap-10 lg:grid-cols-[0.96fr_1.04fr]">
+      <div className="container-shell relative z-10 grid min-h-[auto] items-center gap-8 md:min-h-[calc(100vh-7rem)] md:gap-10 lg:grid-cols-[0.96fr_1.04fr]">
         <div className="max-w-3xl">
           <motion.div
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 text-sm font-bold text-cyan-100 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl"
+            className="mobile-motion-visible mb-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 text-sm font-bold text-cyan-100 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl"
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
@@ -446,9 +458,9 @@ export function Hero() {
             Emotional intelligence for real life
           </motion.div>
 
-          <h1 className="font-display text-5xl font-black leading-[0.98] text-white md:text-6xl lg:text-[4.65rem] xl:text-[5.05rem]">
+          <h1 className="font-display text-[3.2rem] font-black leading-[0.98] text-white sm:text-6xl md:text-6xl lg:text-[4.65rem] xl:text-[5.05rem]">
             <motion.span
-              className="block"
+              className="mobile-motion-visible block"
               initial={reduceMotion ? false : { opacity: 0, y: 42, filter: "blur(10px)" }}
               animate={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.92, ease: [0.22, 1, 0.36, 1] }}
@@ -456,7 +468,7 @@ export function Hero() {
               Helping Young Minds Navigate
             </motion.span>
             <motion.span
-              className="mt-2 block bg-gradient-to-r from-cyan-200 via-fuchsia-200 to-emerald-200 bg-clip-text text-transparent"
+              className="mobile-motion-visible mt-2 block bg-gradient-to-r from-cyan-200 via-fuchsia-200 to-emerald-200 bg-clip-text text-transparent"
               initial={reduceMotion ? false : { opacity: 0, y: 42, filter: "blur(10px)" }}
               animate={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.92, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -466,7 +478,7 @@ export function Hero() {
           </h1>
 
           <motion.p
-            className="mt-7 max-w-2xl text-lg leading-8 text-slate-200/82 md:text-xl"
+            className="mobile-motion-visible mt-6 max-w-2xl text-base leading-7 text-slate-200/82 md:mt-7 md:text-xl md:leading-8"
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.82, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
@@ -476,38 +488,81 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            className="mt-9 flex flex-col gap-3 sm:flex-row"
+            className="mobile-motion-visible mt-8 flex flex-col gap-3 sm:flex-row md:mt-9"
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.82, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link
               href="/programs"
-              className="touch-target inline-flex items-center justify-center rounded-full bg-white px-7 py-4 font-black text-slate-950 shadow-[0_18px_60px_rgba(56,189,248,0.25)] transition-transform duration-300 hover:-translate-y-0.5"
+              className="touch-target inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-4 font-black text-slate-950 shadow-[0_18px_60px_rgba(56,189,248,0.25)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
             >
               Explore Programs
             </Link>
             <Link
               href="/mind-gym"
-              className="touch-target inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-7 py-4 font-black text-white shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl transition-colors duration-300 hover:bg-white hover:text-slate-950"
+              className="touch-target inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-7 py-4 font-black text-white shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl transition-colors duration-300 hover:bg-white hover:text-slate-950 sm:w-auto"
             >
               <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
               Enter Mind Gym
             </Link>
           </motion.div>
+
+          <motion.div
+            className="mobile-motion-visible mt-8 grid gap-3 md:hidden"
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.72, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Growth signals"
+          >
+            {domainNodes.map((node) => {
+              const Icon = node.icon;
+
+              return (
+                <div
+                  key={node.label}
+                  className="flex items-center justify-between rounded-[1.5rem] border border-white/12 bg-white/[0.06] p-4 shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white"
+                      style={{ backgroundColor: `${node.color}CC` }}
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <p className="font-display text-base font-black text-white">
+                        {node.label}
+                      </p>
+                      <p className="text-xs font-bold uppercase tracking-normal text-cyan-100/70">
+                        Practice space
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    className="h-2 w-2 rounded-full"
+                    style={{ backgroundColor: node.color }}
+                    aria-hidden="true"
+                  />
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
 
-        <BrainVisualization
-          reduceMotion={reduceMotion}
-          rotate={brainRotate}
-          y={brainY}
-          glowOpacity={glowOpacity}
-        />
+        <div className="hidden md:block">
+          <BrainVisualization
+            reduceMotion={reduceMotion}
+            rotate={brainRotate}
+            y={brainY}
+            glowOpacity={glowOpacity}
+          />
+        </div>
       </div>
 
       <motion.a
         href="#challenges"
-        className="absolute bottom-5 left-1/2 z-10 inline-flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-cyan-100/82"
+        className="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-cyan-100/82 md:inline-flex"
         initial={reduceMotion ? false : { opacity: 0 }}
         animate={reduceMotion ? undefined : { opacity: 1, y: [0, 7, 0] }}
         transition={{ duration: 2.2, repeat: reduceMotion ? 0 : Infinity, delay: 1 }}

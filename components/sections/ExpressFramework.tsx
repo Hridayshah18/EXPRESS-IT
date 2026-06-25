@@ -126,12 +126,22 @@ export function ExpressFramework() {
     >
       <video
         ref={videoRef}
-        className="framework-video-media"
+        className="framework-video-media hidden md:block"
         src="/videos/five-stage-world.mp4"
         muted
         playsInline
-        preload="auto"
+        preload="none"
       />
+      <video
+        className="framework-video-media block md:hidden"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      >
+        <source src="/videos/five-stage-world.mp4" type="video/mp4" />
+      </video>
 
       <div className="framework-video-grade" aria-hidden="true" />
       <div className="framework-video-overlay" aria-hidden="true" />
