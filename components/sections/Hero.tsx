@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ComponentType } from "react";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -495,16 +496,28 @@ export function Hero() {
           >
             <Link
               href="/programs"
-              className="touch-target inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-4 font-black text-slate-950 shadow-[0_18px_60px_rgba(56,189,248,0.25)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
+              className="touch-target inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-6 py-3 font-black text-slate-950 shadow-[0_18px_60px_rgba(56,189,248,0.25)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
             >
+              <LottieIcon
+                src="/lottie/Learning.json"
+                ariaLabel="Programs animation"
+                className="h-10 w-10 rounded-full md:h-12 md:w-12"
+                placeholderClassName="bg-slate-950/10"
+              />
               Explore Programs
             </Link>
             <Link
               href="/mind-gym"
-              className="touch-target inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-7 py-4 font-black text-white shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl transition-colors duration-300 hover:bg-white hover:text-slate-950 sm:w-auto"
+              className="touch-target inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-6 py-3 font-black text-white shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl transition-colors duration-300 hover:bg-white hover:text-slate-950 sm:w-auto"
             >
-              <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
+              <LottieIcon
+                src="/lottie/brain exercise.json"
+                ariaLabel="Mind Gym animation"
+                className="h-10 w-10 rounded-full md:h-12 md:w-12"
+                placeholderClassName="bg-white/15"
+              />
               Enter Mind Gym
+              <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
             </Link>
           </motion.div>
 

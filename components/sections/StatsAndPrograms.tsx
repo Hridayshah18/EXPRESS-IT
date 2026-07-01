@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Stagger, StaggerItem, TiltCard } from "@/components/MotionPrimitives";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 import { formatNumber } from "@/lib/utils";
 import { programs, stats } from "@/lib/content";
 
@@ -89,9 +90,7 @@ export function StatsAndPrograms() {
           />
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 md:mt-12 md:grid-cols-4">
-            {programs.map((program) => {
-              const Icon = program.icon;
-              return (
+            {programs.map((program) => (
                 <TiltCard
                   key={program.title}
                   accent={program.accent}
@@ -101,10 +100,15 @@ export function StatsAndPrograms() {
                     <div className="relative aspect-[4/5] overflow-hidden">
                       <ProgramVisual accent={program.accent} image={program.image} />
                       <div
-                        className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl text-white"
+                        className="absolute left-4 top-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/25 bg-white/15 text-white shadow-soft backdrop-blur-xl md:h-20 md:w-20"
                         style={{ backgroundColor: program.accent }}
                       >
-                        <Icon className="h-6 w-6" aria-hidden="true" />
+                        <LottieIcon
+                          src="/lottie/Learning.json"
+                          ariaLabel={`${program.title} learning animation`}
+                          className="h-12 w-12 rounded-xl md:h-14 md:w-14"
+                          placeholderClassName="bg-white/20"
+                        />
                       </div>
                       <div className="absolute bottom-4 left-4 right-4 text-white">
                         <p className="text-xs font-bold uppercase tracking-normal text-white/75">
@@ -127,8 +131,7 @@ export function StatsAndPrograms() {
                     </div>
                   </article>
                 </TiltCard>
-              );
-            })}
+              ))}
           </div>
         </div>
       </section>

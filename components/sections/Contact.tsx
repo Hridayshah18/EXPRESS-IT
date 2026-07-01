@@ -1,9 +1,10 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
-import { Globe, Mail, MapPin, Phone, Send, Users } from "lucide-react";
+import { Globe, Mail, Send, Users } from "lucide-react";
 import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 
 const contactLinks = [
   { label: "Website", href: "/", icon: Globe },
@@ -64,11 +65,21 @@ export function Contact() {
             />
             <div className="mt-8 grid gap-4">
               <div className="glass-panel flex items-center gap-4 rounded-3xl p-4">
-                <Mail className="h-6 w-6 text-primary" aria-hidden="true" />
+                <LottieIcon
+                  src="/lottie/Email Sent.json"
+                  ariaLabel="Email animation"
+                  className="h-12 w-12 rounded-2xl"
+                  placeholderClassName="bg-primary/10"
+                />
                 <span className="font-bold text-slate-700">expressit.myra@gmail.com</span>
               </div>
               <div className="glass-panel flex items-center gap-4 rounded-3xl p-4">
-                <Phone className="h-6 w-6 text-secondary" aria-hidden="true" />
+                <LottieIcon
+                  src="/lottie/Call ringing animation.json"
+                  ariaLabel="Phone animation"
+                  className="h-12 w-12 rounded-2xl"
+                  placeholderClassName="bg-secondary/10"
+                />
                 <a
                   href={publicPhoneHref}
                   className="font-bold text-slate-700 transition-colors duration-200 hover:text-primary"
@@ -77,7 +88,12 @@ export function Contact() {
                 </a>
               </div>
               <div className="glass-panel flex items-center gap-4 rounded-3xl p-4">
-                <MapPin className="h-6 w-6 text-accent" aria-hidden="true" />
+                <LottieIcon
+                  src="/lottie/Chat.json"
+                  ariaLabel="Conversation animation"
+                  className="h-12 w-12 rounded-2xl"
+                  placeholderClassName="bg-accent/10"
+                />
                 <span className="font-bold text-slate-700">India, available for schools and families</span>
               </div>
             </div>

@@ -3,10 +3,19 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { Game } from "@/lib/content";
 import { GameLauncher } from "@/components/games/GameLauncher";
+import { LottieIcon } from "@/components/ui/LottieIcon";
+
+const gameAnimations: Record<string, string> = {
+  patternmind: "/lottie/Memory Game.json",
+  bollyverse: "/lottie/Movie Cut.json",
+  "chain-reaction": "/lottie/BlockChain.json",
+  "rainbow-flow": "/lottie/Loading Lottie Animation.json",
+};
 
 export function GameCard({ game }: { game: Game }) {
   const Icon = game.icon;
   const reduceMotion = useReducedMotion();
+  const animationSrc = gameAnimations[game.slug];
 
   return (
     <motion.article
@@ -19,7 +28,16 @@ export function GameCard({ game }: { game: Game }) {
       <div className="relative z-10 flex h-full flex-col justify-between">
         <div className="flex items-start justify-between gap-3">
           <div className="rounded-2xl border border-white/25 bg-white/15 p-4 backdrop-blur-xl">
-            <Icon className="h-8 w-8" aria-hidden="true" />
+            {animationSrc ? (
+              <LottieIcon
+                src={animationSrc}
+                ariaLabel={`${game.title} animation`}
+                className="h-14 w-14 rounded-xl md:h-16 md:w-16"
+                placeholderClassName="bg-white/20"
+              />
+            ) : (
+              <Icon className="h-8 w-8" aria-hidden="true" />
+            )}
           </div>
           <span className="rounded-full bg-black/20 px-3 py-2 text-xs font-black">
             {game.difficulty}

@@ -1,9 +1,9 @@
 "use client";
 
-import { Trophy, Zap } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { GameCard } from "@/components/games/GameCard";
 import { GameLauncher } from "@/components/games/GameLauncher";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 import { games } from "@/lib/content";
 
 export function MindGym() {
@@ -57,7 +57,12 @@ export function MindGym() {
           <div className="grid gap-5">
             <article className="dark-glass rounded-[1.75rem] p-5 md:rounded-[2rem] md:p-6">
               <div className="flex items-center gap-3">
-                <Trophy className="h-7 w-7 text-amber-200" aria-hidden="true" />
+                <LottieIcon
+                  src="/lottie/brain exercise.json"
+                  ariaLabel="Brain exercise animation"
+                  className="h-14 w-14 rounded-2xl md:h-16 md:w-16"
+                  placeholderClassName="bg-amber-200/20"
+                />
                 <h3 className="font-display text-2xl font-black">Achievements</h3>
               </div>
               <div className="mt-5 grid gap-3">
@@ -70,7 +75,12 @@ export function MindGym() {
             </article>
             <article className="dark-glass rounded-[1.75rem] p-5 md:rounded-[2rem] md:p-6">
               <div className="flex items-center gap-3">
-                <Zap className="h-7 w-7 text-emerald-200" aria-hidden="true" />
+                <LottieIcon
+                  src="/lottie/brain exercise.json"
+                  ariaLabel="Thinking questions animation"
+                  className="h-14 w-14 rounded-2xl md:h-16 md:w-16"
+                  placeholderClassName="bg-emerald-200/20"
+                />
                 <h3 className="font-display text-2xl font-black">Coming Soon</h3>
               </div>
               <p className="mt-4 leading-7 text-slate-200">

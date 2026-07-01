@@ -5,11 +5,20 @@ import { motion, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { challenges, type Challenge } from "@/lib/content";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const challengeAnimations: Record<string, string> = {
+  Stress: "/lottie/Student.json",
+  "Anxiety & Confusion": "/lottie/Brainy questions.json",
+  "Academic Pressure": "/lottie/Student.json",
+  "Emotional Guidance": "/lottie/Brainy questions.json",
+  "Communication Gaps": "/lottie/Chat.json",
+};
+
 function ChallengeVisual({ challenge }: { challenge: Challenge }) {
-  const Icon = challenge.icon;
+  const animationSrc = challengeAnimations[challenge.title] ?? "/lottie/Student.json";
 
   return (
     <div className="relative mx-auto flex aspect-square w-full max-w-[460px] items-center justify-center">
@@ -100,8 +109,14 @@ function ChallengeVisual({ challenge }: { challenge: Challenge }) {
       ) : null}
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="rounded-[2rem] border border-white/15 bg-white/10 p-8 text-white shadow-2xl backdrop-blur-xl">
-          <Icon className="h-16 w-16" aria-hidden="true" />
+        <div className="rounded-[2rem] border border-white/15 bg-white/10 p-5 text-white shadow-2xl backdrop-blur-xl md:p-6">
+          <LottieIcon
+            src={animationSrc}
+            ariaLabel={`${challenge.title} animation`}
+            className="h-20 w-20 rounded-[1.5rem] md:h-24 md:w-24"
+            placeholderClassName="bg-white/15"
+            loop={false}
+          />
         </div>
       </div>
     </div>

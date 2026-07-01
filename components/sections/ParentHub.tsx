@@ -1,66 +1,48 @@
 "use client";
 
-import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/MotionPrimitives";
-import { ParentHubLottie, type ParentHubLottieKind } from "@/components/ParentHubLottie";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 
 type ParentResource = {
   title: string;
-  animation: ParentHubLottieKind;
+  animation: string;
   detail: string;
 };
 
 const resources: ParentResource[] = [
   {
     title: "Parenting Resources",
-    animation: "book",
+    animation: "/lottie/support system.json",
     detail: "Short guides for pressure, confidence, emotions, and screen habits.",
   },
   {
     title: "Communication Tips",
-    animation: "speech",
+    animation: "/lottie/support system.json",
     detail: "Conversation starters that lower defensiveness and raise clarity.",
   },
   {
     title: "Workshops",
-    animation: "calendar",
+    animation: "/lottie/support system.json",
     detail: "Live and school-linked sessions for families navigating modern childhood.",
   },
   {
     title: "Guides",
-    animation: "path",
+    animation: "/lottie/support system.json",
     detail: "Practical toolkits for recurring family challenges.",
   },
 ];
 
-function ParentResourceCard({
-  resource,
-  index,
-}: {
-  resource: ParentResource;
-  index: number;
-}) {
-  const [playSignal, setPlaySignal] = useState(0);
-
-  const playAnimation = () => {
-    setPlaySignal((value) => value + 1);
-  };
-
+function ParentResourceCard({ resource }: { resource: ParentResource }) {
   return (
-    <article
-      className="dark-glass rounded-[1.75rem] p-6"
-      onFocusCapture={playAnimation}
-      onMouseEnter={playAnimation}
-      onPointerDown={playAnimation}
-    >
-      <ParentHubLottie
-        kind={resource.animation}
-        label={`${resource.title} animation`}
-        playSignal={playSignal}
-        delay={index * 180}
+    <article className="dark-glass rounded-[1.75rem] p-6">
+      <LottieIcon
+        src={resource.animation}
+        ariaLabel={`${resource.title} animation`}
+        className="h-20 w-20 rounded-[1.6rem] border border-white/20 bg-white/10 shadow-[0_18px_42px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:h-24 sm:w-24"
+        placeholderClassName="bg-white/10"
       />
       <h3 className="mt-7 font-display text-2xl font-black">{resource.title}</h3>
       <p className="mt-3 leading-7 text-slate-200">{resource.detail}</p>
@@ -89,9 +71,9 @@ export function ParentHub() {
           />
 
           <Stagger className="grid gap-4 sm:grid-cols-2">
-            {resources.map((resource, index) => (
+            {resources.map((resource) => (
               <StaggerItem key={resource.title}>
-                <ParentResourceCard resource={resource} index={index} />
+                <ParentResourceCard resource={resource} />
               </StaggerItem>
             ))}
           </Stagger>
