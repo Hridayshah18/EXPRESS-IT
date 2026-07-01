@@ -292,37 +292,27 @@ export function GenerationalChallenges() {
 
       <div className="container-shell relative z-10 flex min-h-screen items-center py-20 md:py-24">
         <div className="absolute left-0 top-24 hidden font-mono text-xs font-bold uppercase tracking-normal text-emerald-200 md:block">
-          Today's generational challenges
+          Problems Gen Z is facing
         </div>
 
         <h2 id="challenges-title" className="sr-only">
-          Today's generational challenges
+          Problems Gen Z is facing
         </h2>
 
         <div className="relative grid w-full gap-12 lg:min-h-[620px]">
-          {challenges.map((challenge, index) => (
+          {challenges.map((challenge) => (
             <motion.article
               key={challenge.title}
               className="challenge-chapter relative grid min-h-[auto] max-w-full items-center gap-8 py-8 md:py-14 lg:absolute lg:inset-0 lg:min-h-[620px] lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 lg:py-0"
               initial={reduceMotion ? { opacity: 1, y: 0 } : false}
             >
               <div>
-                <p className="font-mono text-sm font-bold uppercase tracking-normal text-slate-300">
-                  {challenge.eyebrow}
-                </p>
-                <h3 className="mt-4 font-display text-4xl font-black leading-none md:text-6xl lg:text-7xl">
+                <h3 className="font-display text-4xl font-black leading-none md:text-6xl lg:text-7xl">
                   {challenge.title}
                 </h3>
                 <p className="mt-6 max-w-xl text-base leading-7 text-slate-200 md:text-lg md:leading-8">
                   {challenge.description}
                 </p>
-                <div className="mt-8 flex items-center gap-3 text-sm font-bold text-slate-300">
-                  <span
-                    className="h-3 w-3 rounded-full"
-                    style={{ backgroundColor: challenge.color }}
-                  />
-                  Scroll chapter {index + 1} of {challenges.length}
-                </div>
               </div>
               <div className="challenge-visual min-w-0 max-w-full">
                 <ChallengeVisual challenge={challenge} />

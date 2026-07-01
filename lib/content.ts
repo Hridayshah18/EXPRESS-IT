@@ -23,7 +23,6 @@ export type NavItem = {
 
 export type Challenge = {
   title: string;
-  eyebrow: string;
   description: string;
   visual: "cubes" | "fog" | "stairs" | "lights" | "bubbles";
   color: string;
@@ -73,7 +72,6 @@ export const navItems: NavItem[] = [
 export const challenges: Challenge[] = [
   {
     title: "Stress",
-    eyebrow: "Chapter 01",
     description:
       "Students carry invisible pressure from exams, expectations, deadlines, and comparison. EXPRESS IT turns pressure into language, support, and action.",
     visual: "cubes",
@@ -82,7 +80,6 @@ export const challenges: Challenge[] = [
   },
   {
     title: "Anxiety & Confusion",
-    eyebrow: "Chapter 02",
     description:
       "When thoughts feel foggy, young people need simple ways to name feelings, map choices, and see a next step.",
     visual: "fog",
@@ -91,7 +88,6 @@ export const challenges: Challenge[] = [
   },
   {
     title: "Academic Pressure",
-    eyebrow: "Chapter 03",
     description:
       "Competition culture can make identity feel like a scoreboard. We help students build performance with self-awareness, not fear.",
     visual: "stairs",
@@ -100,7 +96,6 @@ export const challenges: Challenge[] = [
   },
   {
     title: "Emotional Guidance",
-    eyebrow: "Chapter 04",
     description:
       "Emotional literacy is rarely taught like a life skill. EXPRESS IT builds tools that feel practical, friendly, and repeatable.",
     visual: "lights",
@@ -109,7 +104,6 @@ export const challenges: Challenge[] = [
   },
   {
     title: "Communication Gaps",
-    eyebrow: "Chapter 05",
     description:
       "Children, parents, peers, and schools often speak past one another. We turn disconnected signals into safer conversations.",
     visual: "bubbles",

@@ -566,7 +566,7 @@ export function Hero() {
         initial={reduceMotion ? false : { opacity: 0 }}
         animate={reduceMotion ? undefined : { opacity: 1, y: [0, 7, 0] }}
         transition={{ duration: 2.2, repeat: reduceMotion ? 0 : Infinity, delay: 1 }}
-        aria-label="Scroll to today's generational challenges"
+        aria-label="Scroll to problems Gen Z is facing"
       >
         <span>Scroll</span>
         <ArrowDown className="h-5 w-5" aria-hidden="true" />
